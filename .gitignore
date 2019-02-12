@@ -22,3 +22,23 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
+### Eclipse ###
+.settings
+.project
+.classpath
+.studio
+target
+
+### Apple ###
+.DS_Store
+
+*.class
+
+### Package Files ###
+*.jar
+*.war
+*.ear
+
+backend/target
+backend/src/main/resources/public/
