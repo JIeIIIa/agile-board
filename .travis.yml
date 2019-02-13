@@ -2,7 +2,7 @@ language: java
 sudo: required
 
 jdk:
-  -oraklejdk8
+  - oraclejdk8
 
 before_install:
   - chmod +x mvnw
