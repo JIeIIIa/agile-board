@@ -8,7 +8,7 @@ before_install:
   - chmod +x mvnw
 
 script:
-  - mvn clean install coveralls:report - B
+  - mvn clean install coveralls:report -B
 
 after_script:
   - echo "Script was finished"
