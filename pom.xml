@@ -8,10 +8,11 @@
     <artifactId>agile-board</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <module>frontend</module>
         <module>backend</module>
     </modules>
 
-    <description>AgileBoard is test application for Limestone</description>
+    <description>AgileBoard is a test application for Limestone</description>
 
     <packaging>pom</packaging>
 

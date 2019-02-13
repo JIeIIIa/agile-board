@@ -42,3 +42,13 @@ target
 
 backend/target
 backend/src/main/resources/public/
+frontend/dist/
+frontend/node/
+frontend/node_modules/
+frontend/.DS_Store
+frontend/npm-debug.log
+frontend/target
+frontend/test-output
+frontend/tests/e2e/reports
+frontend/tests/unit/coverage
+security/target/
