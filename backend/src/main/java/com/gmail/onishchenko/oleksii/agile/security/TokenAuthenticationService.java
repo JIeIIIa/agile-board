@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Collections.emptyList;
 
-class TokenAuthenticationService {
+public class TokenAuthenticationService {
     static final long EXPIRATION_TIME = 864_000_000; // 10 days
     static final String SECRET = "ThisIsASecret";
     static final String TOKEN_PREFIX = "Bearer";
@@ -27,7 +27,7 @@ class TokenAuthenticationService {
         response.getWriter().write("{\"token\":\"" + JWT + "\"}");
     }
 
-    private static String createToken(String login) {
+    public static String createToken(String login) {
         return Jwts.builder()
                     .setSubject(login)
                     .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))

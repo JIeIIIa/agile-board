@@ -6,18 +6,19 @@
         <h1>to</h1>
         <h1>Agile Board</h1>
       </div>
+      <div class="col-2 offset-6">
+        <router-link to="/board" class="btn btn-primary btn-lg form-control">
+          View board
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-  // @ is an alias to /src
-  import HelloWorld from '@/components/HelloWorld.vue'
-
   export default {
     name: 'home',
     components: {
-      HelloWorld
     }
   }
 </script>

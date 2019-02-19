@@ -35,7 +35,10 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         if (nonNull(authentication) && userInfoService.existsByLogin(authentication.getName())) {
             SecurityContextHolder.getContext()
                     .setAuthentication(authentication);
+        } else {
+            SecurityContextHolder.clearContext();
         }
+
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 }

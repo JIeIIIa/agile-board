@@ -1,6 +1,7 @@
 package com.gmail.onishchenko.oleksii.agile.security;
 
 import com.gmail.onishchenko.oleksii.agile.entity.UserInfo;
+import com.gmail.onishchenko.oleksii.agile.exception.UserNotFoundException;
 import com.gmail.onishchenko.oleksii.agile.repository.UserInfoJpaRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -33,7 +34,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         UserDetails userDetails = user.map(this::convert)
                 .orElseThrow(() -> {
                     LOG.warn("Cannot load UserInfo for [ login = '{}' ]", login);
-                    return new UsernameNotFoundException(login + " not found");
+                    return new UserNotFoundException(login + " not found");
                 });
 
         LOG.debug("User [ login = {} ] was loaded", login);

@@ -1,4 +1,4 @@
-import {AUTH_ERROR, AUTH_LOGOUT, AUTH_NEW_ACCOUNT, AUTH_REQUEST, AUTH_SUCCESS} from '../actions/auth'
+import {AUTH_AUTO_LOGIN, AUTH_ERROR, AUTH_LOGOUT, AUTH_NEW_ACCOUNT, AUTH_REQUEST, AUTH_SUCCESS} from '../actions/auth'
 import {USER_REQUEST} from '../actions/user'
 import axios from 'axios'
 
@@ -10,6 +10,17 @@ const getters = {
 }
 
 const actions = {
+  [AUTH_AUTO_LOGIN]: ({commit, dispatch}) => {
+    return new Promise((resolve, reject) => {
+      if (getters.isAuthenticated) {
+        axios.defaults.headers.common['authorization'] = state.token
+        resolve()
+      } else {
+        commit(AUTH_LOGOUT)
+        reject()
+      }
+    })
+  },
   [AUTH_REQUEST]: ({commit, dispatch}, user) => {
     return new Promise((resolve, reject) => {
       commit(AUTH_REQUEST)

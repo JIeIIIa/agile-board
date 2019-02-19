@@ -2,12 +2,14 @@ package com.gmail.onishchenko.oleksii.agile.service;
 
 import com.gmail.onishchenko.oleksii.agile.dto.UserInfoDto;
 import com.gmail.onishchenko.oleksii.agile.entity.UserInfo;
+import com.gmail.onishchenko.oleksii.agile.exception.UserAlreadyExistsException;
 import com.gmail.onishchenko.oleksii.agile.repository.UserInfoJpaRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
@@ -24,21 +26,23 @@ public class UserInfoServiceImpl implements UserInfoService {
         this.userInfoJpaRepository = userInfoJpaRepository;
     }
 
+    @Transactional
     @Override
     public UserInfoDto add(UserInfoDto userInfoDto) {
         userInfoJpaRepository.findByLogin(userInfoDto.getLogin())
                 .ifPresent(u -> {
-                    throw new RuntimeException();
+                    throw new UserAlreadyExistsException();
                 });
         UserInfo userInfo = new UserInfo(userInfoDto.getLogin(), bCryptPasswordEncoder.encode(userInfoDto.getPassword()));
         UserInfo createdUser = userInfoJpaRepository.saveAndFlush(userInfo);
         return new UserInfoDto(createdUser);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public boolean existsByLogin(String login) {
         boolean present = userInfoJpaRepository.findByLogin(login).isPresent();
-        log.debug("Login = [], present = {}", login, present);
+        log.debug("Login = {}, present = {}", login, present);
         return present;
     }
 }

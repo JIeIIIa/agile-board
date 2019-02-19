@@ -43,8 +43,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/index").permitAll()
+                .antMatchers("/manifest.json", "/service-worker.js", "/precache-manifest*").permitAll()
+                .antMatchers("/img/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/login", "/api/registration").permitAll()
-                .antMatchers("/public/**/**").permitAll()
+                .antMatchers("/public/**").permitAll()
+                .antMatchers("/static/**/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // We filter the api/login requests

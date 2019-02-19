@@ -16,6 +16,7 @@ public class UserInfo implements Serializable {
     private Long id;
 
     @NotNull
+    @Column(unique = true)
     private String login;
 
     private String password;

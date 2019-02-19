@@ -3,7 +3,10 @@ package com.gmail.onishchenko.oleksii.agile.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gmail.onishchenko.oleksii.agile.entity.UserInfo;
 
+import javax.validation.constraints.NotNull;
+
 public class UserInfoDto {
+    @NotNull
     private String login;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -43,5 +46,12 @@ public class UserInfoDto {
 
     public void setPasswordConfirmation(String passwordConfirmation) {
         this.passwordConfirmation = passwordConfirmation;
+    }
+
+    @Override
+    public String toString() {
+        return "UserInfoDto{" +
+                "login='" + login + '\'' +
+                '}';
     }
 }
