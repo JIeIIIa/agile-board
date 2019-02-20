@@ -63,15 +63,14 @@ public class Card implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Card card = (Card) o;
-        return Objects.equals(id, card.id) &&
-                Objects.equals(text, card.text) &&
+        return Objects.equals(text, card.text) &&
                 status == card.status &&
                 Objects.equals(userInfo, card.userInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, text, status, userInfo);
+        return Objects.hash(text, status, userInfo);
     }
 
     @Override

@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Objects;
 
 import static com.gmail.onishchenko.oleksii.agile.security.TokenAuthenticationService.retrieveUserInfoDto;
 
@@ -34,6 +35,11 @@ public class RegistrationFilter extends OncePerRequestFilter {
         if (antPathRequestMatcher.matches(httpServletRequest)) {
             log.debug("Try to register a user");
             UserInfoDto credentials = retrieveUserInfoDto(httpServletRequest);
+            if (!Objects.equals(credentials.getPassword(), credentials.getPasswordConfirmation())) {
+                log.warn("Password and confirmation are not equal");
+                httpServletResponse.setStatus(HttpStatus.BAD_REQUEST.value());
+                return;
+            }
             credentials = userInfoService.add(credentials);
 
             TokenAuthenticationService

@@ -29,8 +29,8 @@ public class CardServiceImpl implements CardService {
     @Autowired
     public CardServiceImpl(CardJpaRepository cardJpaRepository,
                            UserInfoJpaRepository userInfoJpaRepository) {
-        this.userInfoJpaRepository = userInfoJpaRepository;
         log.info("Create instance of {}", CardServiceImpl.class);
+        this.userInfoJpaRepository = userInfoJpaRepository;
         this.cardJpaRepository = cardJpaRepository;
     }
 

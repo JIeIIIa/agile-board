@@ -4,23 +4,12 @@ import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-class UserInfoTest {
+class CardTest {
     @Test
     void equals() {
-        EqualsVerifier.forClass(UserInfo.class)
+        EqualsVerifier.forClass(Card.class)
                 .usingGetClass()
                 .suppress(Warning.NONFINAL_FIELDS)
                 .verify();
-    }
-
-    @Test
-    void toStringTest() {
-        //When
-        String result = new UserInfo().toString();
-
-        //Then
-        assertThat(result).doesNotContain("password");
     }
 }

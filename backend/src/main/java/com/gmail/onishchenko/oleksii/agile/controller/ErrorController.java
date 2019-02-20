@@ -1,6 +1,7 @@
 package com.gmail.onishchenko.oleksii.agile.controller;
 
 import com.gmail.onishchenko.oleksii.agile.exception.AgileBoardException;
+import com.gmail.onishchenko.oleksii.agile.exception.CardNotFoundException;
 import com.gmail.onishchenko.oleksii.agile.exception.UserAlreadyExistsException;
 import com.gmail.onishchenko.oleksii.agile.exception.UserNotFoundException;
 import org.apache.logging.log4j.LogManager;
@@ -16,7 +17,7 @@ public class ErrorController {
 
     @ExceptionHandler(value = {AgileBoardException.class,
             UserAlreadyExistsException.class, UserNotFoundException.class,
-            ClassNotFoundException.class})
+            CardNotFoundException.class})
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public void generalException(Exception e) {
         log.warn(e);

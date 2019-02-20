@@ -29,12 +29,14 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Transactional
     @Override
     public UserInfoDto add(UserInfoDto userInfoDto) {
+        log.debug("Adding user {}", userInfoDto.getLogin());
         userInfoJpaRepository.findByLogin(userInfoDto.getLogin())
                 .ifPresent(u -> {
                     throw new UserAlreadyExistsException();
                 });
         UserInfo userInfo = new UserInfo(userInfoDto.getLogin(), bCryptPasswordEncoder.encode(userInfoDto.getPassword()));
         UserInfo createdUser = userInfoJpaRepository.saveAndFlush(userInfo);
+        log.trace("User was saved: login = {}", createdUser.getLogin());
         return new UserInfoDto(createdUser);
     }
 
