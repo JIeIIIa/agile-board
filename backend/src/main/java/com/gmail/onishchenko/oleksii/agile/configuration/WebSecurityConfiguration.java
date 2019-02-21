@@ -22,6 +22,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final Logger log = LogManager.getLogger(WebSecurityConfiguration.class);
 
+    /**
+     * The service that provides methods to manage users
+     */
     private final UserInfoService userInfoService;
 
     @Autowired
@@ -32,12 +35,18 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Configuration
     public static class BCryptPasswordConfiguration {
+        /**
+         * The bean to provide encoder to crypt passwords
+         */
         @Bean
         public BCryptPasswordEncoder passwordEncoder() {
             return new BCryptPasswordEncoder();
         }
     }
 
+    /**
+     * Configure http security
+     * */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
@@ -59,5 +68,4 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(new JWTAuthenticationFilter(userInfoService),
                         UsernamePasswordAuthenticationFilter.class);
     }
-
 }

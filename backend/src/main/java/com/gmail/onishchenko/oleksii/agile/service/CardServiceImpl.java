@@ -17,13 +17,25 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
+/**
+ * The {@link CardServiceImpl} class is the implementation of
+ * the {@link CardService} interface provides methods to manage cards.
+ *
+ * @see CardService
+ */
 @Service
 public class CardServiceImpl implements CardService {
 
     private static final Logger log = LogManager.getLogger(CardServiceImpl.class);
 
+    /**
+     * The repository that providing access to cards
+     */
     private final CardJpaRepository cardJpaRepository;
 
+    /**
+     * The repository that providing access to users
+     */
     private final UserInfoJpaRepository userInfoJpaRepository;
 
     @Autowired
@@ -34,6 +46,13 @@ public class CardServiceImpl implements CardService {
         this.cardJpaRepository = cardJpaRepository;
     }
 
+    /**
+     * Find all cards by the user
+     *
+     * @param login the user's login
+     * @return list of cards that specified user has created
+     * @throws com.gmail.onishchenko.oleksii.agile.exception.UserNotFoundException if the user with specified login not present
+     */
     @Transactional(readOnly = true)
     @Override
     public List<CardDto> retrieveAll(String login) {
@@ -44,6 +63,14 @@ public class CardServiceImpl implements CardService {
                 .collect(toList());
     }
 
+    /**
+     * Add a new card
+     *
+     * @param cardDto a card data transfer object
+     * @return a data transfer object that contains added information
+     * @throws UserNotFoundException if the user with specified login
+     *                               do not present in database
+     */
     @Transactional
     @Override
     public CardDto add(CardDto cardDto) {
@@ -54,6 +81,14 @@ public class CardServiceImpl implements CardService {
         return new CardDto(card);
     }
 
+    /**
+     * Update card information by the user's (owner) login and card's id
+     *
+     * @param cardDto a card data transfer object
+     * @return a data transfer object that contains updated information
+     * @throws UserNotFoundException if the user with specified login
+     *                               do not present in database
+     */
     @Transactional
     @Override
     public CardDto update(CardDto cardDto) {
@@ -67,6 +102,14 @@ public class CardServiceImpl implements CardService {
         return cardDto;
     }
 
+    /**
+     * Delete card with the specified id
+     *
+     * @param cardDto a card data transfer object that contains the
+     *                user's login and card's id that should be deleted
+     * @throws UserNotFoundException if the user with specified login
+     *                               do not present in database
+     */
     @Transactional
     @Override
     public void delete(CardDto cardDto) {
@@ -74,12 +117,23 @@ public class CardServiceImpl implements CardService {
         cardJpaRepository.deleteByUserInfoAndId(userInfo, cardDto.getId());
     }
 
+    /**
+     * Retrieve information about a user with the specified login
+     *
+     * @param userLogin the user's login
+     * @return the user information
+     * @throws UserNotFoundException if the user with specified login
+     *                               do not present in database
+     */
     private UserInfo retrieveUserInfo(String userLogin) {
         return userInfoJpaRepository
                 .findByLogin(userLogin)
                 .orElseThrow(UserNotFoundException::new);
     }
 
+    /**
+     * Map a card data transfer object to a card
+     */
     private Card mapToCard(CardDto cardDto, UserInfo userInfo) {
         Card card = new Card();
         card.setText(cardDto.getText());

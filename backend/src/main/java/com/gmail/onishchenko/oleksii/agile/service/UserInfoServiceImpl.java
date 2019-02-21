@@ -11,12 +11,25 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * The {@link UserInfoServiceImpl} class is the implementation of
+ * the {@link UserInfoService} interface provides methods to manage users.
+ *
+ * @see UserInfoService
+ */
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
 
     private static final Logger log = LogManager.getLogger(UserInfoServiceImpl.class);
 
+    /**
+     * The encoder to crypt passwords
+     */
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    /**
+     * The repository that providing access to users
+     */
     private final UserInfoJpaRepository userInfoJpaRepository;
 
     @Autowired
@@ -26,6 +39,14 @@ public class UserInfoServiceImpl implements UserInfoService {
         this.userInfoJpaRepository = userInfoJpaRepository;
     }
 
+    /**
+     * Add a new user
+     *
+     * @param userInfoDto a user data transfer object
+     * @return a data transfer object that contains added information
+     * @throws UserAlreadyExistsException if the user with the same login
+     *                                    already exists in database
+     */
     @Transactional
     @Override
     public UserInfoDto add(UserInfoDto userInfoDto) {
@@ -40,6 +61,13 @@ public class UserInfoServiceImpl implements UserInfoService {
         return new UserInfoDto(createdUser);
     }
 
+    /**
+     * Check if the user with specified login already exists
+     *
+     * @param login the user's login
+     * @return <code>true</code> if and only if a user with
+     * specified login exists; <code>false</code> otherwise.
+     */
     @Transactional(readOnly = true)
     @Override
     public boolean existsByLogin(String login) {

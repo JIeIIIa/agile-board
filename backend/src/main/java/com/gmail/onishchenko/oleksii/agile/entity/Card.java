@@ -7,20 +7,37 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * The entity class to encapsulate card information that
+ * presents on the board
+ */
+
 @Entity
 @Table
 public class Card implements Serializable {
 
     private static final long serialVersionUID = 7135667559702196003L;
 
+    /**
+     * The primary key
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * The primary key
+     */
     private String text;
 
+    /**
+     * The task status
+     */
     private Status status;
 
+    /**
+     * The user who created the task
+     */
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_card_id")
     @OnDelete(action = OnDeleteAction.CASCADE)

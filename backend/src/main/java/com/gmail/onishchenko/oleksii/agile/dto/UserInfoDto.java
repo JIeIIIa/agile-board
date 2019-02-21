@@ -6,13 +6,26 @@ import com.gmail.onishchenko.oleksii.agile.entity.UserInfo;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
+/**
+ * The UserInfo Data Transfer Object to encapsulate user information
+ */
 public class UserInfoDto {
+
+    /**
+     * The user's login (i.e. username)
+     */
     @NotNull
     private String login;
 
+    /**
+     * The user's password
+     */
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
+    /**
+     * The user's password confirmation
+     */
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String passwordConfirmation;
 

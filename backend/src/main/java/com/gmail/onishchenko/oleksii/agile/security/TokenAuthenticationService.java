@@ -15,6 +15,9 @@ import java.util.stream.Collectors;
 
 import static java.util.Collections.emptyList;
 
+/**
+ * The service provides method to work with JWT tokens
+ */
 public class TokenAuthenticationService {
     static final long EXPIRATION_TIME = 864_000_000; // 10 days
     static final String SECRET = "ThisIsASecret";

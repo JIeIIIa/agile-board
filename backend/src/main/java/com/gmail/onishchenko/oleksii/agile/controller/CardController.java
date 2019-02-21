@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * The rest controller to process request related to cards information
+ */
 @RestController
 @RequestMapping("/api")
 public class CardController {
@@ -24,6 +27,11 @@ public class CardController {
         this.cardService = cardService;
     }
 
+    /**
+     * Find the cards list of the authenticated user
+     *
+     * @return the card data transfer objects list of the authenticated user
+     */
     @GetMapping("/cards")
     public ResponseEntity<List<CardDto>> retrieveAllCards() {
         String login = SecurityContextHolder.getContext()
@@ -35,6 +43,11 @@ public class CardController {
         return ResponseEntity.ok(list);
     }
 
+    /**
+     * Add a new card to the cards list of the authenticated user
+     *
+     * @return the added card data transfer object
+     */
     @PostMapping("/cards")
     public ResponseEntity<CardDto> addCard(@Validated CardDto cardDto) {
         associateWithLogin(cardDto);
@@ -44,6 +57,13 @@ public class CardController {
                 .body(addedCard);
     }
 
+    /**
+     * Update a card with specified id and that was created by the authenticated user
+     *
+     * @param id      the card's id
+     * @param cardDto a data transfer object that contains new information
+     * @return the updated card data transfer object
+     */
     @PutMapping("/cards/{id}")
     public ResponseEntity<CardDto> update(@PathVariable("id") Long id, @Validated CardDto cardDto) {
         associateWithLogin(cardDto);
@@ -52,6 +72,11 @@ public class CardController {
         return ResponseEntity.ok(updatedCard);
     }
 
+    /**
+     * Delete a card with specified id and that was created by the authenticated user
+     *
+     * @param id the card's id that should be deleted
+     */
     @DeleteMapping("/cards/{id}")
     @ResponseStatus(value = HttpStatus.OK)
     public void delete(@PathVariable("id") Long id) {
@@ -61,6 +86,10 @@ public class CardController {
         cardService.delete(cardDto);
     }
 
+    /**
+    * Replace a user's login in a card data transfer object to
+     * the current authenticated user's login
+    * */
     private void associateWithLogin(CardDto cardDto) {
         String login = SecurityContextHolder.getContext().getAuthentication().getName();
         cardDto.setUserLogin(login);

@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * The controller to process exceptions
+ * */
 @ControllerAdvice
 public class ErrorController {
     private static final Logger log = LogManager.getLogger(ErrorController.class);

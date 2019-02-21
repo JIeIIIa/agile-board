@@ -19,6 +19,9 @@ import java.io.IOException;
 import static com.gmail.onishchenko.oleksii.agile.security.TokenAuthenticationService.retrieveUserInfoDto;
 import static java.util.Collections.emptyList;
 
+/**
+ * The filter to login a user by a login and password
+ */
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
     private static final Logger log = LogManager.getLogger(JWTLoginFilter.class);

@@ -15,6 +15,9 @@ import java.io.IOException;
 
 import static java.util.Objects.nonNull;
 
+/**
+ * The filter to authenticate a user by a JWT token
+ */
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
     private static final Logger log = LogManager.getLogger(JWTAuthenticationFilter.class);

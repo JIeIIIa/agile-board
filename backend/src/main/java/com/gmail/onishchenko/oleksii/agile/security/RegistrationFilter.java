@@ -17,6 +17,9 @@ import java.util.Objects;
 
 import static com.gmail.onishchenko.oleksii.agile.security.TokenAuthenticationService.retrieveUserInfoDto;
 
+/**
+ * The filter to register a new user
+ */
 public class RegistrationFilter extends OncePerRequestFilter {
 
     private static final Logger log = LogManager.getLogger(RegistrationFilter.class);

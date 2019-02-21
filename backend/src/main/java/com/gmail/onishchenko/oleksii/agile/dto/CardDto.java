@@ -12,15 +12,27 @@ import java.util.Objects;
 
 import static java.util.Objects.nonNull;
 
+/**
+ * The Card Data Transfer Object to encapsulate card information
+ */
 public class CardDto {
     private Long id;
 
+    /**
+     * The primary key
+     */
     @NotEmpty
     private String text;
 
+    /**
+     * The task status
+     */
     @NotNull
     private Status status;
 
+    /**
+     * The user login who created the task
+     */
     @JsonIgnore
     private String userLogin;
 
