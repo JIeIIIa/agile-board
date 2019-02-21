@@ -21,7 +21,7 @@ before_install:
   - sleep 1
 
 before_script:
-  - sudo psql -c "CREATE DATABASE AgileBoardTest;" -U postgres
+  - sudo psql -c "CREATE DATABASE agile_board_test;" -U postgres
   - sudo -u postgres psql -c "ALTER ROLE postgres WITH password 'password'"
 
 script:
