@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <!-- password == "password" -->
+    <userinfo id="-10" login="Admin" password="$2a$10$5d9zBnsciVksYp.ZzOFdKO7CF/QPi5ve8FVEMHxf.RD8r5ghU653O"/>
+    <!-- password == "password" -->
+    <userinfo id="-7" login="user" password="$2a$10$5d9zBnsciVksYp.ZzOFdKO7CF/QPi5ve8FVEMHxf.RD8r5ghU653O"/>
+    <!-- password == "password" -->
+    <userinfo id="-3" login="token-man" password="$2a$10$5d9zBnsciVksYp.ZzOFdKO7CF/QPi5ve8FVEMHxf.RD8r5ghU653O"/>
+</dataset>

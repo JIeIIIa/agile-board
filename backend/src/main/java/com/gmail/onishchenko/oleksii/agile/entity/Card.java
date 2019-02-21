@@ -22,7 +22,7 @@ public class Card implements Serializable {
     private Status status;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "user_task_id")
+    @JoinColumn(name = "user_card_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private UserInfo userInfo;
 

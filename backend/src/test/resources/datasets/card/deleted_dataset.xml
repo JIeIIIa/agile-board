@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <userinfo id="-10" login="Admin" password="qwerty"/>
+    <card
+        id="-1001" status="0" text="First task" user_card_id="-10"
+    />
+    <card
+            id="-1002" status="2" text="Second task" user_card_id="-10"
+    />
+
+
+    <userinfo id="-7" login="user"  password="qwerty"/>
+    <card
+            id="-701" status="2" text="First done" user_card_id="-7"
+    />
+    <card
+            id="-702" status="2" text="Second done" user_card_id="-7"
+    />
+</dataset>
