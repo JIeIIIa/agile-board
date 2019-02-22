@@ -177,7 +177,7 @@
                         <include>${project.parent.basedir}/backend/target/${application.fullName}</include>
                     </includes>
                     <processTypes>
-                        <web>java $JAVA_OPTS -jar backend/target/${application.fullName}</web>
+                        <web>java $JAVA_OPTS -jar target/${application.fullName}</web>
                     </processTypes>
                 </configuration>
             </plugin>
