@@ -6,7 +6,7 @@
         <h1>to</h1>
         <h1>Agile Board</h1>
       </div>
-      <div class="col-2 offset-6">
+      <div class="col-6 offset-5 col-sm-4 offset-sm-6 col-lg-2 offset-lg-7 col-xl-2 offset-xl-6">
         <router-link to="/board" class="btn btn-primary btn-lg form-control">
           View board
         </router-link>

@@ -53,9 +53,9 @@
     name: "Registration",
     data() {
       return {
-        login: 'admin',
-        password: 'password',
-        passwordConfirmation: 'password',
+        login: '',
+        password: '',
+        passwordConfirmation: '',
         error: false
       }
     },

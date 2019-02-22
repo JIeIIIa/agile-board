@@ -46,8 +46,8 @@
     name: "Login",
     data() {
       return {
-        login: 'admin',
-        password: 'password',
+        login: '',
+        password: '',
         error: false
       }
     },
