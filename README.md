@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/JIeIIIa/agile-board.svg?branch=master)](https://travis-ci.org/JIeIIIa/agile-board)
 [![Coverage Status](https://coveralls.io/repos/github/JIeIIIa/agile-board/badge.svg?branch=master)](https://coveralls.io/github/JIeIIIa/agile-board?branch=master)
 
-
+Agile Board is a test project for Limestone. See demo on: https://agile-board-app.herokuapp.com/
 
 ## Test task
 
