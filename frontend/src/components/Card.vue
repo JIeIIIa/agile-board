@@ -6,11 +6,11 @@
     </div>
     <div class="card-footer p-1 bg-dark text-light">
       <div class="row">
-        <div class="col-6 m-auto text-center">
+        <div class="col-12 col-md-6 m-auto text-center">
           <small>id: {{ item.id }}</small>
 
         </div>
-        <div class="col-6 d-flex justify-content-end">
+        <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-end">
           <button class="btn btn-sm btn-info btn-menu" v-on:click="onUpdate">Edit</button>
           <button class="btn btn-sm btn-danger btn-menu" v-on:click="onDelete">Del</button>
         </div>

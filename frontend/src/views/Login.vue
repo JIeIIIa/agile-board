@@ -27,9 +27,9 @@
             </div>
           </div>
           <div class="card-footer">
-            <button type="submit" class="col-7 btn btn-primary form-control" v-on:click="doLogin">Login</button>
-            <div class="my-4">OR</div>
-            <router-link to="/registration" class="col-7 btn btn-warning form-control">
+            <button type="submit" class="col-12 col-sm-10 col-md-7 btn btn-primary form-control" v-on:click="doLogin">Login</button>
+            <div class="my-2 my-sm-3">OR</div>
+            <router-link to="/registration" class="col-12 col-sm-10 col-md-7 btn btn-warning form-control">
               Register new account
             </router-link>
           </div>

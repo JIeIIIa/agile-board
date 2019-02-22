@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col p-2" v-for="status in statuses">
+    <div class="col-12 col-md-4 p-2" v-for="status in statuses">
       <CardsGroup v-bind:group-name="status.title" v-bind:items="filterItems(status.title)"
                   v-bind:class-name="status.class"
                   v-on:change-card-group="changeCard"
